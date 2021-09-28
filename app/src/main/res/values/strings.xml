@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Video Game Explorer</string>
+    <string name="this_is_location_name" />
+    <string name="this_is_address" />
+    <string name="nameSort" />
+    <string name="distanceSort" />
+    <string name="arrivalSort" />
+</resources>
