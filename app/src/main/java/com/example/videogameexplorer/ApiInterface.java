@@ -18,8 +18,10 @@ public interface ApiInterface {
         @Headers({ "Content-Type: application/json",
                 "token: Token aa17288ae98d4b18a1fc1b34bfb44e01",
         })
-        @GET("games?dates=2021-09-30,2021-10-10&ordering=-added")
+        @GET("games")
         Call<Games> getGames(
-                @Query("key") String key
+                @Query("key") String key,
+                @Query("dates") String dates,
+                @Query("ordering") String ordering
         );
 }

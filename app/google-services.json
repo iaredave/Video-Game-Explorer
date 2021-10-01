@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1038115640426",
+    "project_id": "video-game-explorer",
+    "storage_bucket": "video-game-explorer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1038115640426:android:4d7fadf3bc267d6fed2613",
+        "android_client_info": {
+          "package_name": "com.example.videogameexplorer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1038115640426-qvpvqiuu83t9muou4paf6sonkbevibt6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAvcjZQBtoZ6KhHCjM9wxW4tiIbcl6Bzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1038115640426-qvpvqiuu83t9muou4paf6sonkbevibt6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,8 +15,14 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -43,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         //        layoutManager = new LinearLayoutManager(this);
 //        recyclerView.setLayoutManager(layoutManager);
 //        recyclerView.setAdapter(adapter);
+//        getCurrentDate();
         fetchGames();
     }
 
@@ -50,9 +58,32 @@ public class MainActivity extends AppCompatActivity {
         return (Context)this;
     }
 
+public String getCurrentDate() {
+//    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//    Date date = new Date();
+//    String currentDate = dateFormat.format(date);
+//
+//    Log.v(TAG, "currentDate= " + currentDate);
+//    return dateFormat.format(date);
+//    LocalDate today = LocalDate.parse(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+//    LocalDate later = today.plusDays(5);
+//    String formattedString = localDate.format(formatter);
+    LocalDate localDate = LocalDate.now();//For reference
+    LocalDate futureDate = localDate.plusDays(10);//For reference
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    String formattedLocalString = localDate.format(formatter);
+    String formattedFutureString = futureDate.format(formatter);
+
+
+//    Log.v(TAG, "currentDate= " + today);
+//    Log.v(TAG, "laterDate= " + later);
+    Log.v(TAG, "combined Date= " + formattedLocalString+"%2C"+formattedFutureString);
+    return formattedLocalString+","+formattedFutureString;
+}
+
     private void fetchGames() {
         progressBar.setVisibility(View.VISIBLE);
-        RetrofitClient.getRetrofitClient().getGames("aa17288ae98d4b18a1fc1b34bfb44e01").enqueue(new Callback<Games>() {
+        RetrofitClient.getRetrofitClient().getGames( "aa17288ae98d4b18a1fc1b34bfb44e01", getCurrentDate(), "-added").enqueue(new Callback<Games>() {
             @Override
             public void onResponse(Call<Games> call, Response<Games> response) {
                 if (response.isSuccessful() && response.body() != null) {
