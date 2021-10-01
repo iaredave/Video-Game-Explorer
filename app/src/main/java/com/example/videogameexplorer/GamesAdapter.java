@@ -34,8 +34,10 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvName.setText(arrayList.get(position).getName());
-        Glide.with(mContext)
+        Glide
+                .with(mContext)
                 .load(arrayList.get(position).getBackground_image())
+                .centerCrop()
                 .into(holder.tvImage);
     }
 
