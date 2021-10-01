@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/goule/Desktop/Video-Game-Explorer/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/goule/Desktop/Video-Game-Explorer/app/src/main/res/layout-w1240dp/activity_custom_auth.xml" value="0.1" />
         <entry key="..\:/Users/goule/Desktop/Video-Game-Explorer/app/src/main/res/layout/activity_custom_auth.xml" value="0.11203703703703703" />
+        <entry key="..\:/Users/goule/Desktop/Video-Game-Explorer/app/src/main/res/layout/activity_login.xml" value="0.1889564336372847" />
+        <entry key="..\:/Users/goule/Desktop/Video-Game-Explorer/app/src/main/res/layout/activity_main_login.xml" value="0.1889564336372847" />
+        <entry key="..\:/Users/goule/Desktop/Video-Game-Explorer/app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="..\:/Users/goule/Desktop/Video-Game-Explorer/app/src/main/res/layout/game_list_item.xml" value="0.25" />
         <entry key="..\:/Users/goule/Downloads/VideoGameExplorer/app/src/main/res/layout/activity_main.xml" value="0.39166666666666666" />
         <entry key="..\:/Users/goule/Downloads/VideoGameExplorer/app/src/main/res/layout/game_list_item.xml" value="0.39166666666666666" />
