@@ -34,9 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "lel";
     RecyclerView recyclerView;
     ProgressBar progressBar;
-//    LinearLayoutManager layoutManager;
-//    GamesAdapter adapter;
-//    List<Games> gamesList = new ArrayList<>();
     ApiInterface apiInterface;
     private GamesAdapter adapter;
 
@@ -48,10 +45,7 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        //        layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setAdapter(adapter);
-//        getCurrentDate();
+
         fetchGames();
     }
 
@@ -60,25 +54,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 public String getCurrentDate() {
-//    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//    Date date = new Date();
-//    String currentDate = dateFormat.format(date);
-//
-//    Log.v(TAG, "currentDate= " + currentDate);
-//    return dateFormat.format(date);
-//    LocalDate today = LocalDate.parse(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-//    LocalDate later = today.plusDays(5);
-//    String formattedString = localDate.format(formatter);
     LocalDate localDate = LocalDate.now();//For reference
     LocalDate futureDate = localDate.plusDays(10);//For reference
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     String formattedLocalString = localDate.format(formatter);
     String formattedFutureString = futureDate.format(formatter);
 
-
-//    Log.v(TAG, "currentDate= " + today);
-//    Log.v(TAG, "laterDate= " + later);
-    Log.v(TAG, "combined Date= " + formattedLocalString+"%2C"+formattedFutureString);
     return formattedLocalString+","+formattedFutureString;
 }
 
