@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void fetchGames() {
         progressBar.setVisibility(View.VISIBLE);
-        RetrofitClient.getRetrofitClient().getGames().enqueue(new Callback<Games>() {
+        RetrofitClient.getRetrofitClient().getGames("aa17288ae98d4b18a1fc1b34bfb44e01").enqueue(new Callback<Games>() {
             @Override
             public void onResponse(Call<Games> call, Response<Games> response) {
                 if (response.isSuccessful() && response.body() != null) {
