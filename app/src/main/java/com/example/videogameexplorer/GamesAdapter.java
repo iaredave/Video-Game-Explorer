@@ -1,21 +1,27 @@
 package com.example.videogameexplorer;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> {
+    private Context mContext;
+    private ArrayList<Results> arrayList;
 
-    private List<Games> gamesList;
-
-    public GamesAdapter(List<Games> gamesList) {
-        this.gamesList = gamesList;
+    public GamesAdapter(ArrayList<Results> arrayList) {
+        this.mContext = mContext;
+        this.arrayList = arrayList;
     }
 
     @NonNull
@@ -28,27 +34,24 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.tvName.setText(gamesList.get(position).getName());
-//        holder.tvAddress.setText(locationsList.get(position).getAddress());
+        holder.tvName.setText(arrayList.get(position).getName());
+//        Glide.with(mContext)
+//                .load(arrayList.get(position).getBackground_image())
+//                .into(holder.tvImage);
     }
 
     @Override
     public int getItemCount() {
-        return gamesList.size();
+        return arrayList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView tvName;
-        TextView tvAddress;
-
+        ImageView tvImage;
         public ViewHolder(@NonNull View itemView) {
-            super (itemView);
-
-            tvName = itemView.findViewById(R.id.tvName);
-//            tvAddress = itemView.findViewById(R.id.tvAddress);
+            super(itemView);
+            tvName=(TextView)itemView.findViewById(R.id.tvName);
+            tvImage=(ImageView)itemView.findViewById(R.id.tvImage);
         }
     }
-
 }

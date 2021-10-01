@@ -25,30 +25,38 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "lel";
     RecyclerView recyclerView;
     ProgressBar progressBar;
-    LinearLayoutManager layoutManager;
-    GamesAdapter adapter;
-    List<Games> gamesList = new ArrayList<>();
+//    LinearLayoutManager layoutManager;
+//    GamesAdapter adapter;
+//    List<Games> gamesList = new ArrayList<>();
+    ApiInterface apiInterface;
+    private GamesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progressBar);
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new GamesAdapter(gamesList);
-        recyclerView.setAdapter(adapter);
+        //        layoutManager = new LinearLayoutManager(this);
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setAdapter(adapter);
         fetchGames();
     }
 
     private void fetchGames() {
         progressBar.setVisibility(View.VISIBLE);
-        RetrofitClient.getRetrofitClient().getGames().enqueue(new Callback<List<Games>>() {
+        RetrofitClient.getRetrofitClient().getGames().enqueue(new Callback<Games>() {
             @Override
-            public void onResponse(Call<List<Games>> call, Response<List<Games>> response) {
+            public void onResponse(Call<Games> call, Response<Games> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    gamesList.addAll(response.body());
+                    List<Results> resultsList = response.body().getResults();
+                    for(int i = 0; i < resultsList.size(); i++) {
+                        adapter = new GamesAdapter((ArrayList<Results>)resultsList);
+                        recyclerView.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
 //                    Collections.sort(gamesList, Games.LocationsNameComparator);
 //                    adapter.notifyDataSetChanged();
                     progressBar.setVisibility(View.GONE);
@@ -56,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Games>> call, Throwable t) {
+            public void onFailure(Call<Games> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(MainActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }

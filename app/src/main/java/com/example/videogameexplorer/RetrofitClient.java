@@ -12,11 +12,12 @@ public class RetrofitClient {
     private static Retrofit retrofit = null;
 
     public static ApiInterface getRetrofitClient() {
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 //        Gson gson = new GsonBuilder().serialize
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
         }
         return retrofit.create(ApiInterface.class);
