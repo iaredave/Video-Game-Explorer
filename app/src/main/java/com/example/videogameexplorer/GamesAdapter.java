@@ -13,13 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> {
     private Context mContext;
     private ArrayList<Results> arrayList;
 
-    public GamesAdapter(ArrayList<Results> arrayList) {
+    public GamesAdapter(ArrayList<Results> arrayList, Context mContext) {
         this.mContext = mContext;
         this.arrayList = arrayList;
     }
@@ -35,9 +34,9 @@ public class GamesAdapter extends RecyclerView.Adapter<GamesAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvName.setText(arrayList.get(position).getName());
-//        Glide.with(mContext)
-//                .load(arrayList.get(position).getBackground_image())
-//                .into(holder.tvImage);
+        Glide.with(mContext)
+                .load(arrayList.get(position).getBackground_image())
+                .into(holder.tvImage);
     }
 
     @Override

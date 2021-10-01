@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -45,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
         fetchGames();
     }
 
+    public Context getContext() {
+        return (Context)this;
+    }
+
     private void fetchGames() {
         progressBar.setVisibility(View.VISIBLE);
         RetrofitClient.getRetrofitClient().getGames().enqueue(new Callback<Games>() {
@@ -53,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     List<Results> resultsList = response.body().getResults();
                     for(int i = 0; i < resultsList.size(); i++) {
-                        adapter = new GamesAdapter((ArrayList<Results>)resultsList);
+                        adapter = new GamesAdapter((ArrayList<Results>)resultsList, getContext());
                         recyclerView.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                     }
@@ -70,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
