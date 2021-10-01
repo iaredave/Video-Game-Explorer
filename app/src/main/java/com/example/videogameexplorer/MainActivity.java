@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -121,9 +122,8 @@ public String getCurrentDate() {
         super.onOptionsItemSelected(item);
         switch (item.getItemId()){
             case R.id.nameSort:
-//                Collections.sort(gamesList, Games.LocationsNameComparator);
-                adapter.notifyDataSetChanged();
-                Toast.makeText(this, "Sorted by name", Toast.LENGTH_SHORT).show();
+              Intent intent = new Intent(getContext(), MainActivityLogin.class);
+                getContext().startActivity(intent);
                 break;
             case R.id.distanceSort:
 //                Collections.sort(locationsList, Locations.LocationsDistanceComparator);
